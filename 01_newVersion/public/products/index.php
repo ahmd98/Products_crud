@@ -1,15 +1,18 @@
 <?php
-require_once "database.php";
+require_once "../../database.php";
 $search = $_GET['search'] ?? '';
+
 if ($search) {
     $statement = $pdo->prepare('SELECT * FROM products WHERE title LIKE :title ORDER BY create_date DESC ');
     $statement->bindValue(':title', "%$search%");
 } else {
     $statement = $pdo->prepare('SELECT * FROM products ORDER BY create_date DESC');
 }
+
 $statement->execute();
 $products = $statement->fetchAll(PDO::FETCH_ASSOC);?>
-<?php include_once "views/partials/header.php";?>
+
+<?php include_once "../../views/partials/header.php";?>
     <h1>Products CRUD</h1>
 
     <p><a href="create.php" class="btn btn-success">Create Product</a></p>
@@ -31,11 +34,13 @@ $products = $statement->fetchAll(PDO::FETCH_ASSOC);?>
         </tr>
       </thead>
       <tbody>
+
         <?php foreach ($products as $i => $product) {?>
+
         <tr>
           <th scope="row"><?php echo $i + 1 ?></th>
           <td>
-            <img src="<?php echo $product['image'] ?>" class="thumb_image" alt="img"/>
+            <img src="/<?php echo $product['image'] ?>" class="thumb_image" alt="img"/>
           </td>
           <td><?php echo $product['title'] ?></td>
           <td><?php echo $product['price'] ?></td>
