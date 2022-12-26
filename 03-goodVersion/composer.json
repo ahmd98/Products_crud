@@ -1,0 +1,20 @@
+{
+  "name": "products/ahmd",
+  "autoload": {
+    "psr-4": {
+      "Products\\Ahmd\\": "src/"
+    }
+  },
+  "authors": [
+    {
+      "name": "Ahmed ibrahim",
+      "email": "aibrahim142@gmail.com"
+    }
+  ],
+  "require": {},
+  "autoload-dev": {
+    "psr-4": {
+      "app\\": "./"
+    }
+  }
+}
